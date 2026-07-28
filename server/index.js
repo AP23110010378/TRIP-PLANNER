@@ -224,8 +224,8 @@ app.post('/api/generate-itinerary', async (req, res) => {
 const distPath = join(__dirname, '../dist');
 app.use(express.static(distPath));
 
-// SPA catch-all fallback: Serve index.html for all non-API routes (/ and /app)
-app.get('*', (req, res) => {
+// SPA catch-all fallback: Serve index.html for all non-API routes
+app.use((req, res) => {
   if (req.path.startsWith('/api')) {
     return res.status(404).json({ error: 'API endpoint not found.' });
   }
