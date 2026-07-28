@@ -19,8 +19,8 @@ import { SYSTEM_PROMPT, buildUserPrompt } from './promptTemplate.js';
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Middleware
-app.use(cors({ origin: 'http://localhost:5173' }));
+// Allow all origins in production (Render/Vercel) and localhost in dev
+app.use(cors());
 app.use(express.json());
 
 const apiKey = process.env.GROQ_API_KEY;
